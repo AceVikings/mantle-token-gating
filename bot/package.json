@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "discord": "^0.8.2",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "ethers": "^6.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
