@@ -1,14 +1,21 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
 const app = express();
 require("dotenv").config();
-const PORT = process.env.PORT || 9000;
 
-app.get("/:id", (req, res) => {
-  console.log("Here");
-  res.status(200).json({
-    message: "hi",
-    id: req.params.id,
-  });
-});
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.DATABASE_URL);
+
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to Database"));
+
+app.use(express.json());
+
+const discordRouter = require("./routes/discord");
+app.use("/discord", discordRouter);
+
+const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, console.log(`Listening on PORT: ${PORT}`));
