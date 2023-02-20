@@ -5,7 +5,11 @@ const userLocalSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  local: {
+  address: {
+    type: String,
+    required: true,
+  },
+  server: {
     type: String,
     required: true,
   },

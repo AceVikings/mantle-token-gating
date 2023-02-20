@@ -6,7 +6,7 @@ const userGlobalSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  global: {
+  address: {
     type: String,
     require: true,
   },

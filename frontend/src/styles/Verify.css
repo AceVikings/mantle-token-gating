@@ -1,0 +1,35 @@
+.verify {
+  margin: 20px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.metamask--button {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 30px;
+  color: whitesmoke;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: rgba(255, 102, 196, 0.8);
+}
+
+.verify--header {
+  color: whitesmoke;
+}
+
+.verify--text-area {
+  height: fit-content;
+  word-break: break-all;
+  width: 250px;
+  height: 200px;
+  resize: none;
+}
