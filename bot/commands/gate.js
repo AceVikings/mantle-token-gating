@@ -1,7 +1,8 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { ethers } = require("ethers");
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-const gateMap = new Map();
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("set-gating")
@@ -48,15 +49,31 @@ module.exports = {
         ephemeral: true,
       });
     } else {
-      gateMap.set(interaction.guildId, {
-        type: type,
-        contract: contract,
-        balance: balance,
-        role: roleId,
-      });
-      await interaction.reply({
-        content: "ok",
-        ephemeral: true,
+      fetch(`http://localhost:9000/discord/server/${interaction.guildId}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: type,
+          contract: contract,
+          balance: balance,
+          role: roleId,
+        }),
+      }).then(async (response) => {
+        console.log("Got here");
+        if (response.status === 201 || response.status === 200) {
+          await interaction.reply({
+            content: "Gate Added!",
+            ephemeral: true,
+          });
+        } else {
+          await interaction.reply({
+            content: "Gate Failed!",
+            ephemeral: true,
+          });
+        }
       });
     }
   },

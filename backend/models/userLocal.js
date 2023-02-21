@@ -15,4 +15,6 @@ const userLocalSchema = new mongoose.Schema({
   },
 });
 
+userLocalSchema.index({ id: 1, server: 1 }, { unique: true });
+
 module.exports = mongoose.model("UserLocal", userLocalSchema);

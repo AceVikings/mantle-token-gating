@@ -42,9 +42,28 @@ const Verify = () => {
   }
 
   async function signMessage() {
-    const sign = await signer.signMessage("Hello");
+    const sign = await signer.signMessage(token);
     setSignature(sign);
-    console.log(sign);
+    notify("Signature Generated");
+
+    fetch("http://localhost:9000/discord", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        token: token,
+        address: address,
+        signature: signature,
+      }),
+    }).then((response) => {
+      if (response.status === 201 || response.status === 200) {
+        notify("Successfully Registered");
+      } else {
+        notify("Registration Failed!");
+      }
+    });
   }
 
   const handleTokenChange = (e) => {
@@ -55,6 +74,7 @@ const Verify = () => {
     if (jwt) {
       setToken(jwt);
     }
+    console.log(token);
   }, []);
 
   return (

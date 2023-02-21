@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/verify/:jwt?" element={<Verify />} />
+        <Route path="/auth/:jwt?" element={<Verify />} />
       </Routes>
     </div>
   );

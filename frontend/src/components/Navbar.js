@@ -13,8 +13,8 @@ const Navbar = () => {
 
       <ul>
         <li>
-          <Link to="/verify" className="nav--link">
-            Verify
+          <Link to="/auth" className="nav--link">
+            Auth
           </Link>
         </li>
         <li>Developers</li>

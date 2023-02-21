@@ -1,9 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { ethers } = require("ethers");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-let watchedFilters = [];
-const watchMap = new Map();
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("auth")
@@ -35,7 +33,7 @@ module.exports = {
         await interaction.reply({
           embeds: [
             {
-              description: `[Verify here](http://localhost:3000/verify/${token})`,
+              description: `[Verify here](http://localhost:3000/auth/${token})`,
             },
           ],
           ephemeral: true,
