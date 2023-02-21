@@ -45,7 +45,7 @@ module.exports = {
       await interaction.reply({
         embeds: [
           {
-            description: `[Verify here](http://localhost:3000/verify/${token})`,
+            description: `[Verify here](http://localhost:3000/auth/${token})`,
           },
         ],
         ephemeral: true,

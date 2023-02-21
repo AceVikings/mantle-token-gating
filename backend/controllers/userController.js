@@ -34,12 +34,18 @@ const getUser = asyncHandler(async (req, res) => {
       }
     } else {
       const user = await userLocal.findOne({ id: id });
+
       if (!user) {
-        res.status(404).json({
-          message: "user not found",
-        });
+        const global = await userGlobal.findOne({ id: id });
+        if (!global) {
+          return res.status(404).json({
+            message: "user not found",
+          });
+        } else {
+          return res.status(200).json(global);
+        }
       } else {
-        res.status(200).json(user);
+        return res.status(200).json(user);
       }
     }
   } catch (err) {

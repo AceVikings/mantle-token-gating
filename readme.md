@@ -1,5 +1,9 @@
 # Discord API and Gating Bot
 
+## Demo Video
+
+[![Demo](screenshots/5.png)](https://youtu.be/wAYw6DBmmjM "Demo Video")
+
 ## Discord Bot
 
 Our bot allows for projects or groups to token gate their discord channels by assigning roles through our discord bot. Using our bot you can easily set up token gating for your discord. It's easy -

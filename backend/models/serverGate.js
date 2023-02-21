@@ -10,19 +10,19 @@ const serverGateSchema = new mongoose.Schema({
     {
       type: {
         type: String,
-        require: true,
+        required: true,
       },
       contract: {
         type: String,
-        require: true,
+        required: true,
       },
       balance: {
         type: String,
-        require: true,
+        required: true,
       },
       role: {
         type: String,
-        require: true,
+        required: true,
       },
     },
   ],

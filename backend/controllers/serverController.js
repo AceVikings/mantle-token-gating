@@ -18,7 +18,8 @@ const getServerStats = asyncHandler(async (req, res) => {
 });
 
 const getServer = asyncHandler(async (req, res) => {
-  let id = req.query.id;
+  let id = req.params.id;
+  console.log(id);
   try {
     let server = await serverGate.findOne({ id: id });
     res.status(200).json(server);
